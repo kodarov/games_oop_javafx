@@ -5,7 +5,7 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 import ru.job4j.chess.firuges.black.BishopBlack;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LogicTest {
@@ -19,6 +19,7 @@ public class LogicTest {
         });
         assertThat(exception.getMessage()).isEqualTo("Figure not found on the board.");
     }
+
     @Test
     public void whenMoveThenImpossibleMoveException()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
@@ -27,10 +28,11 @@ public class LogicTest {
         logic.add(bishopBlack);
         ImpossibleMoveException exception = assertThrows(
                 ImpossibleMoveException.class,
-                () -> logic.move(Cell.C1,Cell.C3)
+                () -> logic.move(Cell.C1, Cell.C3)
         );
         assertThat(exception.getMessage()).isEqualTo("Could not way by diagonal from C1 to C3");
     }
+
     @Test
     public void whenMoveThenOccupiedCellException()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
@@ -41,7 +43,7 @@ public class LogicTest {
         logic.add(pawnBlack);
         OccupiedCellException exception = assertThrows(
                 OccupiedCellException.class,
-                () -> logic.move(Cell.C1,Cell.E3)
+                () -> logic.move(Cell.C1, Cell.E3)
         );
     }
 }
