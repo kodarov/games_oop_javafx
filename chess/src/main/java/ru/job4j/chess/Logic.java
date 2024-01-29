@@ -2,6 +2,7 @@ package ru.job4j.chess;
 
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
+
 import java.util.Arrays;
 
 public final class Logic {
@@ -21,10 +22,10 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        for (Cell cell: steps) {
-            for (Figure figure:figures) {
-                if (cell == figure.position()) {
-                    throw new OccupiedCellException();
+        for (Cell cell : steps) {
+            for (Figure figure : figures) {
+                if (cell.equals(figure.position())) {
+                    throw new OccupiedCellException(String.format("Occupied cell %s", cell));
                 }
             }
         }

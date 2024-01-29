@@ -45,5 +45,6 @@ public class LogicTest {
                 OccupiedCellException.class,
                 () -> logic.move(Cell.C1, Cell.E3)
         );
+        assertThat(exception.getMessage()).isEqualTo("Occupied cell D2");
     }
 }
